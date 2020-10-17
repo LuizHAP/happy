@@ -8,92 +8,92 @@ import landingSVG from "../public/landing.svg";
 
 import styled from "styled-components";
 
-const Container = styled.div({
-  background: "linear-gradient(329.54deg, #29b6d1 0%, #00c7c7 100%)",
-  width: "100vw",
-  height: "100vh",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-});
+const Container = styled.div`
+  background: linear-gradient(329.54deg, #29b6d1 0%, #00c7c7 100%);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
-const ContentWrapper = styled.div({
-  position: "relative",
+const ContentWrapper = styled.div`
+  position: relative;
 
-  width: "100%",
-  maxWidth: "1100px",
+  width: 100%;
+  max-width: 1100px;
 
-  height: "100%",
-  maxHeight: "680px",
+  height: 100%;
+  max-height: 680px;
 
-  display: "flex",
-  alignItems: "flex-start",
-  flexDirection: "column",
-  justifyContent: "space-between",
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
 
-  background: `url('${landingSVG}') no-repeat right center`,
-});
+  background: url("${landingSVG}") no-repeat right center;
+`;
 
-const Logo = styled.img``;
+const Logo = styled.img({});
 
-const Main = styled.main({
-  maxWidth: "350px",
+const Main = styled.main`
+  max-width: 350px;
 
-  "& h1": {
-    fontSize: "76px",
-    fontWeight: "900",
-    lineHeight: "70px",
-  },
+  h1 {
+    font-size: 76px;
+    font-weight: 900;
+    line-height: 70px;
+  };
 
-  "& p": {
-    marginTop: "40px",
-    fontSize: "24px",
-    linHeight: "34px",
-  },
-});
+  p {
+    margin-top: 40px;
+    font-size: 24px
+    line-height: 34px;
+  };
+`;
 
-const Location = styled.div({
-  position: "absolute",
+const Location = styled.div`
+  position: absolute;
 
-  right: "0",
-  top: "0",
+  right: 0;
+  top: 0;
 
-  fontSize: "24px",
-  lineHeight: "34px",
+  font-size: 24px;
+  line-height: 34px;
 
-  display: "flex",
-  flexDirection: "column",
+  display: flex;
+  flex-direction: column;
 
-  textAlign: "right",
+  text-align: right;
 
-  "& strong": {
-    fontWeight: "800",
-  },
-});
+  & strong {
+    font-weight: 800;
+  }
+`;
 
-const EnterApp = styled.a({
-  position: "absolute",
+const EnterApp = styled.a`
+  position: absolute;
 
-  right: "0",
-  bottom: "0",
+  right: 0;
+  bottom: 0;
 
-  width: "80px",
-  height: "80px",
-  background: "#FFD666",
-  borderRadius: "30px",
+  width: 80px;
+  height: 80px;
+  background: #ffd666;
+  border-radius: 30px;
 
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  cursor: "pointer",
+  cursor: pointer;
 
-  transition: "background-color 0.2s",
+  transition: background-color 0.2s;
 
-  "&:hover": {
-    background: "#96FEEF",
-  },
-});
+  &:hover {
+    background: #96feef;
+  }
+`;
 
 export default function Home() {
   return (
