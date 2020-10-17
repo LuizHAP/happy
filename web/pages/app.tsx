@@ -1,4 +1,7 @@
 import Head from "next/head";
+
+import dynamic from "next/dynamic";
+
 import Link from "next/link";
 
 import { FiPlus } from "react-icons/fi";
@@ -6,6 +9,10 @@ import { FiPlus } from "react-icons/fi";
 import mapMarkerImg from "../public/map-marker.svg";
 
 import styled from "styled-components";
+
+const MapWithNoSSR = dynamic(() => import("../components/Map"), {
+  ssr: false,
+});
 
 const Container = styled.div`
   width: 100vw;
@@ -93,7 +100,7 @@ const app = () => {
           </Footer>
         </ASide>
 
-        <div></div>
+        <MapWithNoSSR />
 
         <Link href="/app">
           <CreateOrphanage>
