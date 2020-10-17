@@ -116,7 +116,7 @@ export default function Home() {
             <strong>Jundiaí</strong>
             <span>São Paulo</span>
           </Location>
-          <Link href="/">
+          <Link href="/app">
             <EnterApp>
               <FiArrowRight size={26} color="rgba(0, 0, 0, 0.6)" />
             </EnterApp>
