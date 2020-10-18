@@ -19,16 +19,12 @@ const Container = styled.div`
   height: 100vh;
   position: relative;
   display: flex;
-
-  &.leaflet-container {
-    z-index: 5;
-  }
 `;
 
 const ASide = styled.aside`
   width: 448px;
   background: linear-gradient(329.54deg, #29b6d1 0%, #00c7c7 100%);
-  padding: 80;
+  padding: 80px;
 
   display: flex;
   flex-direction: column;
@@ -65,7 +61,7 @@ const CreateOrphanage = styled.a`
   right: 40px;
   bottom: 40px;
 
-  z-index: 10;
+  z-index: 9999;
 
   width: 64px;
   height: 64px;
