@@ -1,4 +1,9 @@
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+import styled from "styled-components";
+
+import Link from "next/link";
+
+import { FiArrowRight } from "react-icons/fi";
 
 import Leaflet from "leaflet";
 
@@ -10,6 +15,42 @@ const mapIcon = Leaflet.icon({
   iconAnchor: [25, 60],
   popupAnchor: [170, 2],
 });
+
+const GetOrphanage = styled.a`
+  width: 40px;
+  height: 40px;
+  background: #15c3d6;
+  cursor: pointer;
+  box-shadow: 17.2868px 27.6589px 41.4884px rgba(23, 142, 166, 0.16);
+  border-radius: 12px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledPop = styled(Popup as any)`
+  .leaflet-popup-content-wrapper {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: none;
+  }
+
+  .leaflet-popup-content {
+    color: #0089a5;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 4px 12px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .leaflet-popup-tip-container {
+    display: none;
+  }
+`;
 
 const MapWithNoSSR = () => {
   return (
@@ -24,9 +65,14 @@ const MapWithNoSSR = () => {
       />
 
       <Marker position={[-23.1817208, -46.9029968]} icon={mapIcon}>
-        <Popup closeButton={false} minWidth={240} maxWidth={240}>
+        <StyledPop closeButton={false} minWidth={240} maxWidth={240}>
           Lar das Meninas
-        </Popup>
+          <Link href="">
+            <GetOrphanage>
+              <FiArrowRight size={20} color="#FFF" />
+            </GetOrphanage>
+          </Link>
+        </StyledPop>
       </Marker>
     </Map>
   );

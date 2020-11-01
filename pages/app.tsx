@@ -104,7 +104,7 @@ const app = () => {
 
         <MapWithNoSSR />
 
-        <Link href="/app">
+        <Link href="/orphanages/create">
           <CreateOrphanage>
             <FiPlus size={32} color="#FFF" />
           </CreateOrphanage>
