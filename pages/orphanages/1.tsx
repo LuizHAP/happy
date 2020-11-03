@@ -1,6 +1,8 @@
 import React from "react";
 import { FaWhatsapp } from "react-icons/fa";
-import { FiClock, FiInfo, FiArrowLeft } from "react-icons/fi";
+import { FiClock, FiInfo } from "react-icons/fi";
+
+import Sidebar from '../../components/Sidebar'
 
 import Head from "next/head";
 
@@ -8,55 +10,9 @@ import dynamic from "next/dynamic";
 
 import styled from "styled-components";
 
-import mapMarkerImg from "../../public/map-marker.svg";
-
-import { useRouter } from "next/router";
-
 const OrphanagePage = styled.div`
   display: flex;
   min-height: 100vh;
-
-  aside {
-    position: fixed;
-    height: 100%;
-    padding: 32px 24px;
-    background: linear-gradient(329.54deg, #15b6d6 0%, #15d6d6 100%);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-
-    img {
-      width: 48px;
-    }
-
-    footer {
-      a,
-      button {
-        width: 48px;
-        height: 48px;
-
-        border: 0;
-
-        background: #12afcb;
-        border-radius: 16px;
-
-        cursor: pointer;
-
-        transition: background-color 0.2s;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      a:hover,
-      button:hover {
-        background: #17d6eb;
-      }
-    }
-  }
 `;
 
 const Main = styled.main`
@@ -179,7 +135,7 @@ const OrphanageDetails = styled.div`
       .open-on-weekends {
         background: linear-gradient(154.16deg, #edfff6 7.85%, #ffffff 91.03%);
         border: 1px solid #a1e9c5;
-        color: #37C77F;
+        color: #37c77f;
       }
     }
   }
@@ -217,11 +173,6 @@ const MapWithNoSSR = dynamic(() => import("../../components/MapDetail"), {
 });
 
 export default function Orphanage() {
-  const router = useRouter();
-
-  const goBack = () => {
-    router.push("/app");
-  };
 
   return (
     <div>
@@ -229,16 +180,7 @@ export default function Orphanage() {
         <title>Happy - Detalhes do Orfanato</title>
       </Head>
       <OrphanagePage>
-        <aside>
-          <img src={mapMarkerImg} alt="Happy" />
-
-          <footer>
-            <button type="button" onClick={goBack}>
-              <FiArrowLeft size={24} color="#FFF" />
-            </button>
-          </footer>
-        </aside>
-
+        <Sidebar />
         <Main>
           <OrphanageDetails>
             <img

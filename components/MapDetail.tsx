@@ -1,17 +1,6 @@
 import { Fragment } from "react";
 import { Map, TileLayer, Marker } from "react-leaflet";
-
-import L from "leaflet";
-
-import mapMarkerImg from "../public/map-marker.svg";
-
-const happyMapIcon = L.icon({
-  iconUrl: mapMarkerImg,
-
-  iconSize: [58, 68],
-  iconAnchor: [29, 68],
-  popupAnchor: [0, -60],
-});
+import mapIcon from "../utils/mapIcon";
 
 const MapDetail = () => {
   return (
@@ -32,7 +21,7 @@ const MapDetail = () => {
 
         <Marker
           interactive={false}
-          icon={happyMapIcon}
+          icon={mapIcon}
           position={[-27.2092052, -49.6401092]}
         />
       </Map>
