@@ -3,7 +3,8 @@ import { FaWhatsapp } from "react-icons/fa";
 import { FiClock, FiInfo, FiArrowLeft } from "react-icons/fi";
 
 import Head from "next/head";
-import Link from "next/link";
+
+import dynamic from "next/dynamic";
 
 import styled from "styled-components";
 
@@ -178,7 +179,7 @@ const OrphanageDetails = styled.div`
       .open-on-weekends {
         background: linear-gradient(154.16deg, #edfff6 7.85%, #ffffff 91.03%);
         border: 1px solid #a1e9c5;
-        color: black;
+        color: #37C77F;
       }
     }
   }
@@ -210,6 +211,10 @@ const ContactButton = styled.button`
     background: #36cf82;
   }
 `;
+
+const MapWithNoSSR = dynamic(() => import("../../components/MapDetail"), {
+  ssr: false,
+});
 
 export default function Orphanage() {
   const router = useRouter();
@@ -288,6 +293,7 @@ export default function Orphanage() {
               </p>
 
               <div className="map-container">
+                <MapWithNoSSR />
                 <footer>
                   <a href="">Ver rotas no Google Maps</a>
                 </footer>
