@@ -7,7 +7,9 @@ import Link from "next/link";
 
 import styled from "styled-components";
 
-import mapMarkerImg from '../../public/map-marker.svg';
+import mapMarkerImg from "../../public/map-marker.svg";
+
+import { useRouter } from "next/router";
 
 const OrphanagePage = styled.div`
   display: flex;
@@ -17,7 +19,7 @@ const OrphanagePage = styled.div`
     position: fixed;
     height: 100%;
     padding: 32px 24px;
-    background: linear-gradient(329.54deg, #15B6D6 0%, #15D6D6 100%);
+    background: linear-gradient(329.54deg, #15b6d6 0%, #15d6d6 100%);
 
     display: flex;
     flex-direction: column;
@@ -36,7 +38,7 @@ const OrphanagePage = styled.div`
 
         border: 0;
 
-        background: #12AFCB;
+        background: #12afcb;
         border-radius: 16px;
 
         cursor: pointer;
@@ -64,8 +66,8 @@ const OrphanageDetails = styled.div`
   width: 700px;
   margin: 64px auto;
 
-  background: #FFFFFF;
-  border: 1px solid #D3E2E5;
+  background: #ffffff;
+  border: 1px solid #d3e2e5;
   border-radius: 20px;
 
   overflow: hidden;
@@ -77,7 +79,7 @@ const OrphanageDetails = styled.div`
 
   .images {
     display: grid;
-    grid-template-columns: repeat(6 ,1fr);
+    grid-template-columns: repeat(6, 1fr);
     column-gap: 16px;
 
     margin: 16px 40px 0;
@@ -90,7 +92,7 @@ const OrphanageDetails = styled.div`
       border-radius: 20px;
       overflow: hidden;
       outline: none;
-      
+
       opacity: 0.6;
       .active {
         opacity: 1;
@@ -103,11 +105,11 @@ const OrphanageDetails = styled.div`
       }
     }
   }
-  
+
   .orphanage-details-content {
     padding: 80px;
     h1 {
-      color: #4D6F80;
+      color: #4d6f80;
       font-size: 54px;
       line-height: 54px;
       margin-bottom: 8px;
@@ -115,21 +117,21 @@ const OrphanageDetails = styled.div`
 
     p {
       line-height: 28px;
-      color: #5C8599;
+      color: #5c8599;
       margin-top: 24px;
     }
 
     .map-container {
       margin-top: 64px;
-      background: #E6F7FB;
-      border: 1px solid #B3DAE2;
+      background: #e6f7fb;
+      border: 1px solid #b3dae2;
       border-radius: 20px;
       footer {
         padding: 20px 0;
         text-align: center;
         a {
           line-height: 24px;
-          color: #0089A5;
+          color: #0089a5;
           text-decoration: none;
         }
       }
@@ -139,14 +141,14 @@ const OrphanageDetails = styled.div`
       width: 100%;
       height: 1px;
       border: 0;
-      background: #D3E2E6;
+      background: #d3e2e6;
       margin: 64px 0;
     }
 
     h2 {
       font-size: 36px;
       line-height: 46px;
-      color: #4D6F80;
+      color: #4d6f80;
     }
 
     .open-details {
@@ -165,23 +167,20 @@ const OrphanageDetails = styled.div`
           display: block;
           margin-bottom: 20px;
         }
-
       }
 
       .hour {
-        background: linear-gradient(149.97deg, #E6F7FB 8.13%, #FFFFFF 92.67%);
-        border: 1px solid #B3DAE2;
-        color: #5C8599;
+        background: linear-gradient(149.97deg, #e6f7fb 8.13%, #ffffff 92.67%);
+        border: 1px solid #b3dae2;
+        color: #5c8599;
       }
 
       .open-on-weekends {
-        background: linear-gradient(154.16deg, #EDFFF6 7.85%, #FFFFFF 91.03%);
-        border: 1px solid #A1E9C5;
+        background: linear-gradient(154.16deg, #edfff6 7.85%, #ffffff 91.03%);
+        border: 1px solid #a1e9c5;
         color: black;
       }
     }
-
-
   }
 `;
 
@@ -192,9 +191,9 @@ const ContactButton = styled.button`
   height: 64px;
   border: 0;
   cursor: pointer;
-  background: #3CDC8C;
+  background: #3cdc8c;
   border-radius: 20px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: 800;
 
   display: flex;
@@ -208,89 +207,120 @@ const ContactButton = styled.button`
   }
 
   :hover {
-    background: #36CF82;
+    background: #36cf82;
   }
 `;
 
-
 export default function Orphanage() {
+  const router = useRouter();
+
+  const goBack = () => {
+    router.push("/app");
+  };
+
   return (
     <div>
-    <Head>
+      <Head>
         <title>Happy - Detalhes do Orfanato</title>
       </Head>
       <OrphanagePage>
-          <aside>
-            <img src={mapMarkerImg} alt="Happy" />
+        <aside>
+          <img src={mapMarkerImg} alt="Happy" />
 
-            <footer>
-              <button type="button">
-                <FiArrowLeft size={24} color="#FFF" />
+          <footer>
+            <button type="button" onClick={goBack}>
+              <FiArrowLeft size={24} color="#FFF" />
+            </button>
+          </footer>
+        </aside>
+
+        <Main>
+          <OrphanageDetails>
+            <img
+              src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
+              alt="Lar das meninas"
+            />
+
+            <div className="images">
+              <button className="active" type="button">
+                <img
+                  src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
+                  alt="Lar das meninas"
+                />
               </button>
-            </footer>
-          </aside>
+              <button type="button">
+                <img
+                  src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
+                  alt="Lar das meninas"
+                />
+              </button>
+              <button type="button">
+                <img
+                  src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
+                  alt="Lar das meninas"
+                />
+              </button>
+              <button type="button">
+                <img
+                  src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
+                  alt="Lar das meninas"
+                />
+              </button>
+              <button type="button">
+                <img
+                  src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
+                  alt="Lar das meninas"
+                />
+              </button>
+              <button type="button">
+                <img
+                  src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg"
+                  alt="Lar das meninas"
+                />
+              </button>
+            </div>
 
-          <Main>
-            <OrphanageDetails>
-              <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar das meninas" />
+            <div className="orphanage-details-content">
+              <h1>Lar das meninas</h1>
+              <p>
+                Presta assistência a crianças de 06 a 15 anos que se encontre em
+                situação de risco e/ou vulnerabilidade social.
+              </p>
 
-              <div className="images">
-                <button className="active" type="button">
-                  <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar das meninas" />
-                </button>
-                <button type="button">
-                  <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar das meninas" />
-                </button>
-                <button type="button">
-                  <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar das meninas" />
-                </button>
-                <button type="button">
-                  <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar das meninas" />
-                </button>
-                <button type="button">
-                  <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar das meninas" />
-                </button>
-                <button type="button">
-                  <img src="https://www.gcd.com.br/wp-content/uploads/2020/08/safe_image.jpg" alt="Lar das meninas" />
-                </button>
+              <div className="map-container">
+                <footer>
+                  <a href="">Ver rotas no Google Maps</a>
+                </footer>
               </div>
-              
-              <div className="orphanage-details-content">
-                <h1>Lar das meninas</h1>
-                <p>Presta assistência a crianças de 06 a 15 anos que se encontre em situação de risco e/ou vulnerabilidade social.</p>
 
-                <div className="map-container">
-                  <footer>
-                    <a href="">Ver rotas no Google Maps</a>
-                  </footer>
+              <hr />
+
+              <h2>Instruções para visita</h2>
+              <p>
+                Venha como se sentir mais à vontade e traga muito amor para dar.
+              </p>
+
+              <div className="open-details">
+                <div className="hour">
+                  <FiClock size={32} color="#15B6D6" />
+                  Segunda à Sexta <br />
+                  8h às 18h
                 </div>
-
-                <hr />
-
-                <h2>Instruções para visita</h2>
-                <p>Venha como se sentir mais à vontade e traga muito amor para dar.</p>
-
-                <div className="open-details">
-                  <div className="hour">
-                    <FiClock size={32} color="#15B6D6" />
-                    Segunda à Sexta <br />
-                    8h às 18h
-                  </div>
-                  <div className="open-on-weekends">
-                    <FiInfo size={32} color="#39CC83" />
-                    Atendemos <br />
-                    fim de semana
-                  </div>
+                <div className="open-on-weekends">
+                  <FiInfo size={32} color="#39CC83" />
+                  Atendemos <br />
+                  fim de semana
                 </div>
-
-                <ContactButton>
-                  <FaWhatsapp size={20} color="#FFF" />
-                  Entrar em contato
-                </ContactButton>
               </div>
-            </OrphanageDetails>
-          </Main>
-          </OrphanagePage>
+
+              <ContactButton>
+                <FaWhatsapp size={20} color="#FFF" />
+                Entrar em contato
+              </ContactButton>
+            </div>
+          </OrphanageDetails>
+        </Main>
+      </OrphanagePage>
     </div>
   );
 }
