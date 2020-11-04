@@ -10,6 +10,10 @@ import mapMarkerImg from "../public/map-marker.svg";
 
 import styled from "styled-components";
 
+import axios from "axios";
+
+import api from "../services/api";
+
 const MapWithNoSSR = dynamic(() => import("../components/Map"), {
   ssr: false,
 });
@@ -81,7 +85,8 @@ const CreateOrphanage = styled.a`
   }
 `;
 
-const app = () => {
+const app = (props) => {
+  const { orphanages } = props;
   return (
     <div>
       <Head>
@@ -102,7 +107,7 @@ const app = () => {
           </Footer>
         </ASide>
 
-        <MapWithNoSSR />
+        <MapWithNoSSR orphanages={orphanages}/>
 
         <Link href="/orphanages/create">
           <CreateOrphanage>
@@ -112,6 +117,13 @@ const app = () => {
       </Container>
     </div>
   );
+};
+
+app.getInitialProps = async function () {
+  const res = await api.get("orphanages");
+  return {
+    orphanages: res.data,
+  };
 };
 
 export default app;
