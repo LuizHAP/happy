@@ -1,14 +1,16 @@
-import React from "react";
+import { NextPage, NextPageContext, GetStaticProps } from "next";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiClock, FiInfo } from "react-icons/fi";
 
-import Sidebar from '../../components/Sidebar'
+import Sidebar from "../../components/Sidebar";
 
 import Head from "next/head";
 
 import dynamic from "next/dynamic";
 
 import styled from "styled-components";
+
+import api from "../../services/api";
 
 const OrphanagePage = styled.div`
   display: flex;
@@ -172,8 +174,18 @@ const MapWithNoSSR = dynamic(() => import("../../components/MapDetail"), {
   ssr: false,
 });
 
-export default function Orphanage() {
+interface Orphanage {
+  latitude: Number;
+  longitude: Number;
+  name: String;
+  description: String;
+  instructions: String;
+  opening_hours: String;
+  open_on_weekends: String;
+}
 
+const OrphanageDetail: React.FC<Orphanage> = (props) => {
+  console.log(props);
   return (
     <div>
       <Head>
@@ -271,4 +283,30 @@ export default function Orphanage() {
       </OrphanagePage>
     </div>
   );
+};
+
+export default OrphanageDetail;
+
+export const getStaticProps = async function ({ params }) {
+  const res = await api.get(`orphanages/${params.id}`);
+  return {
+    props: {
+      orphanage: res.data,
+    },
+  };
+};
+
+export async function getStaticPaths() {
+  const res = await api.get(`orphanages`);
+
+  const paths = res.data.map((orphanage) => ({
+    params: { id: orphanage.id.toString() },
+  }));
+
+  console.log(paths);
+
+  return {
+    paths,
+    fallback: false,
+  };
 }

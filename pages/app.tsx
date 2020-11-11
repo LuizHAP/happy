@@ -14,6 +14,16 @@ import axios from "axios";
 
 import api from "../services/api";
 
+import { NextPage } from 'next'
+
+interface Orphanage {
+  orphanages: Array;
+  id: Number;
+  latitude: Number;
+  longitude: Number;
+  name: String;
+}
+
 const MapWithNoSSR = dynamic(() => import("../components/Map"), {
   ssr: false,
 });
@@ -85,7 +95,7 @@ const CreateOrphanage = styled.a`
   }
 `;
 
-const app = (props) => {
+const app: React.FC<Orphanage> = (props) => {
   const { orphanages } = props;
   return (
     <div>
@@ -122,7 +132,7 @@ const app = (props) => {
 app.getInitialProps = async function () {
   const res = await api.get("orphanages");
   return {
-    orphanages: res.data,
+    orphanages: res.data || null,
   };
 };
 

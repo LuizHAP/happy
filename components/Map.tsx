@@ -10,6 +10,7 @@ import mapMarkerImg from "../public/map-marker.svg";
 import styled from "styled-components";
 
 interface Orphanage {
+  orphanages: Array;
   id: Number;
   latitude: Number;
   longitude: Number;
@@ -59,7 +60,7 @@ const StyledPop = styled(Popup as any)`
   }
 `;
 
-const MapWithNoSSR = ({ orphanages<Orphanage> }) => {
+const MapWithNoSSR: React.FC<Orphanage> = ({ orphanages }) => {
   return (
     <Map
       center={[-23.1817208, -46.9029968]}
